@@ -17,7 +17,7 @@ buscaTarefas(state){
     },
 
     //unica que ta funcionando pra deletar
-    removeTarefa(state, id){
-         state.tarefas = state.tarefas.filter(tarefa => tarefa.id!==id)
-         },
+    // removeTarefa(state, id){
+    //      state.tarefas = state.tarefas.filter(tarefa => tarefa.id!==id)
+    //      },
 }

@@ -17,12 +17,15 @@
                 {{tarefa.titulo}}
               </v-list-item-title>
               </v-list-item-content>
+
                <v-list-item-action>
-          <v-btn icon
+          <!-- <v-btn icon
             @click.stop="handleRemoveTarefa(tarefa.id)">
               <v-icon color="blue lighten-1">mdi-trash-can</v-icon>
-            </v-btn>
-            <Tarefamenu />
+            </v-btn> -->
+            <Tarefamenu 
+            :tarefa="tarefa"
+            />
           </v-list-item-action>
          
           
@@ -38,13 +41,13 @@
   import Tarefamenu from './Tarefamenu.vue'; 
   
   export default {
-    components: { Tarefamenu}, //Tarefamenu },
+    components: {Tarefamenu}, 
       props:['tarefa'],
       methods: {
         handleRemoveTarefa(id) {
-            this.$store.commit('removeTarefa', id)
+          this.$store.commit('removeTarefa', id)
          
-          //console.log("excluido")
+          console.log("excluido")
          
           }
         }

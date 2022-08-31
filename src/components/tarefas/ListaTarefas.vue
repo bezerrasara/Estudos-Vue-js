@@ -4,20 +4,21 @@
     @reorder="$event.apply(tarefasComputadas)" 
    
     >
-        <template 
+    <template 
         v-slot:item="{item, reorder}"
         >
-        <drag 
+    <drag 
         :key="item.id" 
         :data="item"
        
-        >
+    >
     
-        <tarefa 
-        :style="reorder ? {borderLeft: '2px solid #1976D2', marginLeft:'-2px'} : {}"
+    <tarefa 
         style="background-color: white"
+        :style="reorder ? {borderLeft: '2px solid #1976D2', marginLeft:'-2px'} : {}"
+        
          :tarefa = "item"
-        />
+    />
 
     <v-divider/>
     </drag>
@@ -28,7 +29,7 @@
 </template>
 
 <script>
-    import {Drag,DropList} from "vue-easy-dnd";
+import {Drag,DropList} from "vue-easy-dnd";
 import Tarefa from './Tarefa.vue';
 
 export default {

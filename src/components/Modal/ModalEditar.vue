@@ -14,6 +14,7 @@
          <v-card-text
          class="mt-2">
           Informe o novo titulo.</v-card-text>
+
            <v-text-field
            class="px-3"
               label="Titulo"
@@ -55,6 +56,7 @@
       },
       created(){
           this.titulo = this.tarefa.titulo
+          //console.log("titulo:", this.titulo);
       },
       methods: {
         handleEditar() {
@@ -64,6 +66,7 @@
           }
           this.$store.dispatch('editaTarefa', novaTarefa);
           this.$emit('fechaModal');
+
         }
       }
     }
