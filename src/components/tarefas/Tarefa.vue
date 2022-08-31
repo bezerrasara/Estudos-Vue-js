@@ -38,7 +38,7 @@
   import Tarefamenu from './Tarefamenu.vue'; 
   
   export default {
-    components: { Tarefamenu, Tarefamenu },
+    components: { Tarefamenu}, //Tarefamenu },
       props:['tarefa'],
       methods: {
         handleRemoveTarefa(id) {

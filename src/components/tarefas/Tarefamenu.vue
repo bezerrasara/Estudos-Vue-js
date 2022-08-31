@@ -31,15 +31,22 @@
       @fechaModal="items[0].modal = false"
       :tarefa = "tarefa"
       />
+      <ModalDeletar 
+      v-if="items[1].modal"
+      @fechaModal="items[1].modal = false"
+      :tarefa = "tarefa"
+      />
+     
     </div>
   </template>
   
   <script>
   import ModalEditar from '../Modal/ModalEditar.vue'
+import ModalDeletar from '../Modal/ModalDeletar.vue'
   
     export default {
       props: ['tarefa'],
-      components: { ModalEditar},
+      components: { ModalEditar, ModalDeletar },
       data: () => ({
         items: [
           
@@ -56,8 +63,10 @@
           { 
               icone:"mdi-trash-can", 
               title: 'Excluir' ,
+              modal: false,
               click() {
                   console.log("excluir")
+                  this.modal = true
               }
           },
   

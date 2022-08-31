@@ -8,19 +8,13 @@
        
         <v-card>
           <v-card-title class="text-h5">
-            Editar
+            Excluir
           </v-card-title>
           <v-divider></v-divider>
          <v-card-text
          class="mt-2">
-          Informe o novo titulo.</v-card-text>
-           <v-text-field
-           class="px-3"
-              label="Titulo"
-              outlined
-              v-model="titulo"
-            >
-            </v-text-field>
+          Deletar?</v-card-text>
+           
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
@@ -34,9 +28,9 @@
             <v-btn
             color="primary"
               text
-              @click="handleEditar()"
+              @click= "handleDeleta()" 
             >
-              Editar
+             Excluir
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -50,19 +44,16 @@
       data () {
         return {
           dialog: true,
-          titulo: null
+          //titulo: null
         }
       },
-      created(){
-          this.titulo = this.tarefa.titulo
-      },
+      //created(){
+          //this.titulo = this.tarefa.titulo
+      //},
       methods: {
-        handleEditar() {
-          let novaTarefa = {
-            titulo: this.titulo,
-            id: this.tarefa.id
-          }
-          this.$store.dispatch('editaTarefa', novaTarefa);
+        handleDeleta() {
+          
+          this.$store.dispatch('removeTarefa', this.tarefa.id);
           this.$emit('fechaModal');
         }
       }

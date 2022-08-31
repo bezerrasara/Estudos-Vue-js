@@ -1,101 +1,47 @@
 <template>
   <div>
-    <v-col
-          cols="12"
-          
-        >
-          <v-text-field
-            v-model="campoInput"
-            label="Adicionar tarefa"
-            outlined
-            clearable
-            @keyup.enter="handleAddTarefa"
-          ></v-text-field>
-        </v-col>
-    <v-list
-      flat
-      subheader
+ 
+    <ListaTarefas />
+    <div
+    v-if="!$store.state.tarefas.length"
+    class="mt-16 animate__animated animate__bounceInUp"
     >
+      <center>
+        <v-icon
+      size="100"
+      color="primary">
+        mdi-check
+      </v-icon>
 
-      <v-list-item-group
-       
-        multiple
-        active-class=""
-      >
-
-
-<!--No video ele remove esses outros list-item pois trabalha somente com um, 
-dai ele cria um componente chamado Tarefa e cola la. 
-então não precisa criar aqui varias lis-item, basta criar um componente e adicionar apenas um list-item e se quiser replicar 
-basta chamar aqui da seguinte forma: <Tarefa />
-
-
-        <v-list-item>
-          <template v-slot:default="{ active }">
-            <v-list-item-action>
-              <v-checkbox :input-value="active"></v-checkbox>
-            </v-list-item-action>
-
-            <v-list-item-content>
-              <v-list-item-title>Sound</v-list-item-title>
-             
-            </v-list-item-content>
-          </template>
-        </v-list-item>
-
-        <v-list-item>
-          <template v-slot:default="{ active }">
-            <v-list-item-action>
-              <v-checkbox :input-value="active"></v-checkbox>
-            </v-list-item-action>
-
-            <v-list-item-content>
-              <v-list-item-title>Auto-add widgets</v-list-item-title>
-            </v-list-item-content>
-          </template>
-        </v-list-item>-->
       <div
-        v-for="tarefa, index in $store.state.tarefas"
-        :key="index "
-        >
-          <Tarefa
-          :tarefa="tarefa" />
-        
-        </div>
-      <button>
+      class="text-h5 primary--text"
+      >
+        Nenhuma tarefa
+      </div>
 
-      </button>
-      </v-list-item-group>
-    </v-list>
+
+      </center>
+      
+    </div>
   </div>
 </template>
 
 <script>
 
-import Tarefa from '../components/tarefas/Tarefa.vue'
+import ListaTarefas from '../components/tarefas/ListaTarefas.vue'
+
   export default {
     name: 'Home',
     components: {
-      Tarefa
-     
-    },
-    data(){
-      return { 
-        index: "",
-        campoInput:null,
-       
-      }},
-
-    methods: {
-      handleAddTarefa(){
-        this.$store.commit('adicionaTarefa', this.campoInput)
-        this.campoInput = null;
-        
-  },
-      
+    
+    ListaTarefas
+},
   
+    created(){
+      this.$store.commit('buscaTarefas');
+
+    },
 
 
-   }
   }
 </script>
