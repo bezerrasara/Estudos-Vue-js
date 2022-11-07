@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from "../store";
 
 
 Vue.use(VueRouter)
@@ -7,15 +8,43 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Tarefas',
-    component: () => import( '../views/Tarefas.vue')
+    name: 'Login',
+    component: () => import( '../views/Login.vue'),
+    meta: { guest: true },
   },
   {
-    path: '/Sobre',
-    name: 'Sobre',
+    path: '/uploadImage',
+    name: 'UploadImage',
     
-    component: () => import( '../views/AboutView.vue')
-  }
+    component: () => import( '../components/uploadImage.vue')
+  },
+  {
+    path: '/tab1',
+    name: 'tab1',
+    
+    component: () => import( '../components/tab1.vue')
+  },
+  {
+    path: '/Fazendo',
+    name: 'Fazendo',
+    
+    component: () => import( '../components/Fazendo.vue')
+  },
+  {
+    path: '/Tarefas',
+    name: 'Tarefas',
+    
+    component: () => import( '../components/Tarefas.vue')
+  },
+  
+  {
+    path: '/Dashboard',
+    name: 'Dashboard',
+    props: {},
+    component: () => import( '../views/Dashboard.vue'),
+    meta: { requiresAuth: true },
+  },
+  
 ]
 
 const router = new VueRouter({

@@ -1,11 +1,12 @@
 import db from '../services/localbase.js';
 
 export default {
-    async adicionaTarefa({commit}, titulo) {
-        await commit('adicionaTarefa', titulo)
+    async adicionaTarefa({commit}, tarefa) {
+        await commit('adicionaTarefa', tarefa )
         await commit('buscaTarefas')
   
       },
+
       editaTarefa({commit}, novaTarefa){
         db.collection('tarefas').doc({ id: novaTarefa.id }).update({
           titulo: novaTarefa.titulo
@@ -20,12 +21,20 @@ export default {
           concluido: !novaTarefa.concluido
         }).then(()=> {
           commit('buscaTarefas')
+          
+          
         })
   
       },
+     
       removeTarefa({commit}, id) {
+        // localStorage.delete(id)
+        
         db.collection('tarefas').doc({id}).delete().then(()=>{
           commit('buscaTarefas')
         })
-      }
+        
+      },
+
+      
 }

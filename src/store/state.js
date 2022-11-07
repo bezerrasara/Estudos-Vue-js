@@ -1,3 +1,14 @@
 export default{
-    tarefas: []
+    tarefas: {
+        fazer: [],
+        fazendo: [],
+        feito: [],
+    },
+    imagem: null,
+    status: null,
+   usuario: null,
+   password: null,
+   conectado: null
+   
+
 }

@@ -25,13 +25,14 @@
             >
              Cancelar
             </v-btn>
-            <v-btn
+            <v-btn 
             color="primary"
               text
               @click= "handleDeleta()" 
             >
              Excluir
             </v-btn>
+
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -44,18 +45,26 @@
       data () {
         return {
           dialog: true,
-          //titulo: null
+      
         }
       },
-      //created(){
-          //this.titulo = this.tarefa.titulo
-      //},
+      
       methods: {
         handleDeleta() {
-          
-          this.$store.dispatch('removeTarefa', this.tarefa.id);
+          if (this.$store.state.tarefas.fazer.includes(this.tarefa)){
+            this.$store.commit('removeTarefa', this.tarefa.id);
+          }
+          else if (this.$store.state.tarefas.fazendo.includes(this.tarefa)){
+            this.$store.commit('removeTarefaFazendo', this.tarefa.id);
+          }
+          else {
+            this.$store.commit('removeTarefaFeito', this.tarefa.id);
+          }
           this.$emit('fechaModal');
+          
         }
+
+        
       }
     }
   </script>

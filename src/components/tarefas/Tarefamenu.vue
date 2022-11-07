@@ -60,7 +60,7 @@ import ModalDeletar from '../Modal/ModalDeletar.vue'
                   this.modal = true
               }
           },
-          { 
+          {
               icone:"mdi-trash-can", 
               title: 'Excluir' ,
               modal: false,

@@ -46,12 +46,14 @@
   </template>
   
   <script>
+
     export default {
       props: ['tarefa'],
       data () {
         return {
           dialog: true,
-          titulo: null
+          titulo: null,
+          
         }
       },
       created(){
@@ -62,9 +64,19 @@
         handleEditar() {
           let novaTarefa = {
             titulo: this.titulo,
-            id: this.tarefa.id
+            id: this.tarefa.id,
           }
-          this.$store.dispatch('editaTarefa', novaTarefa);
+         
+          if (this.$store.state.tarefas.fazer.includes(this.tarefa)){
+            this.$store.commit('editaTarefa', novaTarefa);
+          }
+          else if (this.$store.state.tarefas.fazendo.includes(this.tarefa)){
+            this.$store.commit('editaTarefaFazendo', novaTarefa);
+          }
+          else {
+            this.$store.commit('editaTarefaFeito', novaTarefa);
+          }
+          
           this.$emit('fechaModal');
 
         }
