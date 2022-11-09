@@ -14,7 +14,7 @@
         <v-card 
           rounded="lg" 
           color="grey lighten-3"
-          
+  
           min-height="auto"
           >
             <h3 class="text-center grey">Fazer ✍</h3>

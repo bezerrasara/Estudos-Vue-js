@@ -224,7 +224,7 @@ const today = new Date(timeElapsed);
      
       toggle() {
       if (this.selected === "notifications") {
-        this.component = notifications;
+        this.component = null;
       } 
      else if (this.selected== "Fazendo") {
         this.component = Fazendo;
