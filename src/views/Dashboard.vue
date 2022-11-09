@@ -3,7 +3,12 @@
     
   <v-navigation-drawer
   v-model="drawer"
-  app>
+  app
+  dark
+      src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
+     
+  
+  >
   <v-img
   src="../assets/bg.jpg"
   gradient="to top right, rgba(19,84,122,.5), rgba(28,108,199,.8)"
@@ -12,11 +17,8 @@
   >
   
 <div v-if="isLoggedIn">
-  
-  
   <v-avatar
   size="70"
-  
   > 
       <img
         :src="`${$store.state.imagem}`"
@@ -125,33 +127,22 @@
             <v-icon> mdi-clipboard-check-multiple</v-icon>
           </v-tab> 
           <v-tab href="#notifications">
-            <!-- <div v-if="$store.state.notifications.length!=0"> 
-             <v-badge
-        :content="$store.state.notifications.length"
-        
-        color="green"
-        overlap
-      >
-         <v-icon>mdi-bell</v-icon> 
-      </v-badge>
            
-            </div>
-
-            <div v-else> -->
             <v-icon >
               mdi-bell
             </v-icon>
           <!-- </div> -->
 
           </v-tab>
-          <v-tab href="#Fazendo">
-            tab2
+          <v-tab href="#chat">
+            <v-icon>mdi-message-text</v-icon>
           </v-tab>
         </v-tabs>
         
       </template>
       </v-app-bar>
   <v-main  >
+    <router-view></router-view>
     <!-- <v-alert :value="alert" type="info">
       {{$store.state.notification}}
       <span></span>
@@ -169,6 +160,7 @@ import Fazendo from '../components/Fazendo.vue'
 import Tarefas from '../components/Tarefas.vue'
 import uploadImage from '../components/uploadImage.vue';
 import notifications from '../components/notifications.vue';
+import chat from '../views/chat.vue';
 
   export default {
  
@@ -177,7 +169,8 @@ import notifications from '../components/notifications.vue';
     uploadImage,
     Fazendo,
     Tarefas,
-    notifications
+    notifications,
+    chat
    },
   
     data: () => ({ 
@@ -187,6 +180,7 @@ import notifications from '../components/notifications.vue';
       items: [
             {  title: 'Perfil', icon: 'mdi-account'},
             {  title: 'Dashboard', icon: 'mdi-view-dashboard' , to: '/Dashboard'},
+            { title: 'Chat', icon: 'mdi-message-text', to: '/chat'}
           ],
       
       selected: null,
@@ -226,8 +220,8 @@ const today = new Date(timeElapsed);
       if (this.selected === "notifications") {
         this.component = null;
       } 
-     else if (this.selected== "Fazendo") {
-        this.component = Fazendo;
+     else if (this.selected== "chat") {
+        this.component = chat;
         
       } 
       else {
