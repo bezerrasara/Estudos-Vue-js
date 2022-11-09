@@ -1,7 +1,7 @@
 <template>
     <div 
    v-if="isLoggedIn" >
-   <v-container fluid class="blue lighten-5">
+   <v-container fluid >
       <v-row 
       justify="center"
       >
@@ -25,7 +25,7 @@
               :key="element.id"
                 class="mx-auto mt-2" 
                  elevation="5"
-                color="blue lighten" 
+                color="red " 
                 dark>
                 
                   <Tarefa 

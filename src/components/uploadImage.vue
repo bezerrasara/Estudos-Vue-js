@@ -1,5 +1,5 @@
 <template>
-  <div class="blue">
+  <div class="text-center mt-4">
      <input type="file" 
      accept="image/*" 
      @change=uploadImage>

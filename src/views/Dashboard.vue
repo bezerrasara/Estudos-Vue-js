@@ -1,6 +1,6 @@
 <template>
   <div >
-    <v-app>
+    
   <v-navigation-drawer
   v-model="drawer"
   app>
@@ -151,7 +151,7 @@
         
       </template>
       </v-app-bar>
-  <v-main class="blue lighten-5" >
+  <v-main  >
     <!-- <v-alert :value="alert" type="info">
       {{$store.state.notification}}
       <span></span>
@@ -160,7 +160,7 @@
     <component v-bind:is="component" />
 
   </v-main>
-  </v-app></div>
+ </div>
 </template>
 
 <script>
