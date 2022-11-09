@@ -19,11 +19,12 @@ const routes = [
     component: () => import( '../components/uploadImage.vue')
   },
   {
-    path: '/tab1',
-    name: 'tab1',
+    path: '/notifications',
+    name: 'notifications',
     
-    component: () => import( '../components/tab1.vue')
+    component: () => import( '../components/notifications.vue')
   },
+
   {
     path: '/Fazendo',
     name: 'Fazendo',

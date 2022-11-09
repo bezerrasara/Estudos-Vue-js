@@ -8,7 +8,8 @@ export default{
     status: null,
    usuario: null,
    password: null,
-   conectado: null
-   
-
+   conectado: null,
+   notifications: [],
+   notification: null,
+   prazo: null
 }

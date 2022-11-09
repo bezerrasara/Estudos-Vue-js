@@ -156,6 +156,8 @@ export default {
     const today = new Date(timeElapsed);
     const data = today.toDateString(); // "Sun Jan 30 2022"
     console.log(data);
+   
+    
   }
  
 };

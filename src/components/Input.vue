@@ -22,7 +22,8 @@
       
      >
      <v-card-title>Nova tarefa</v-card-title>
-        <v-card-text>
+        <!-- titulo -->
+     <v-card-text>
           <v-text-field
             ref="title"
             v-model="title"
@@ -30,6 +31,8 @@
             placeholder="Estudar"
             required
           ></v-text-field>
+
+        <!-- descrição -->
           <v-text-field
             ref="descricao"
             v-model="descricao"
@@ -38,8 +41,51 @@
             placeholder="Estudar capitulos 3 e 4"
             required
           ></v-text-field>
-         
-          <fazendo :date="date"/>
+
+         <!-- prazo -->
+          <v-menu
+        ref="menu"
+        v-model="menu"
+        :close-on-content-click="false"
+        
+        transition="scale-transition"
+        offset-y
+        min-width="auto"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="date"
+            label="Picker in menu"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="date"
+          no-title
+          scrollable
+        >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            color="primary"
+            @click="menu = false"
+          >
+            Cancel
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.menu.save(date)"
+          >
+            OK
+          </v-btn>
+        </v-date-picker>
+      </v-menu>
+
+      <!-- prioridade -->
           <v-select
             ref="prioridade"
             v-model="prioridade"
@@ -91,11 +137,14 @@
 </template>
 
 <script>
-import Fazendo from './Fazendo.vue'
+
 export default {
-  props: ['date'],
-  components: { Fazendo },
+  
+  
 data: () => ({
+  date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      menu: false,
+      modal: false,
   dialog: false,
   prioridades: [1,2,3,4,5,6,7,8,9,10],
     prioridade: '',
@@ -131,6 +180,7 @@ computed: {
 
         return true
       },
+      
       resetForm () {
         this.errorMessages = []
         this.formHasErrors = false
@@ -149,6 +199,7 @@ computed: {
         }
 
         this.$store.dispatch('adicionaTarefa', tarefa)
+        this.$store.state.prazo = this.date
         
         this.dialog=false
         this.title = ""

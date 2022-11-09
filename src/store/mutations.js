@@ -17,12 +17,17 @@ export default {
       localStorage.getItem(state.tarefas.feito);
     }
   },
+  buscaNotification(state){
+    localStorage.getItem(state.notifications);
 
+  },
   adicionaTarefa(state, tarefa) {
     // db.collection('tarefas').add(tarefa)
     state.tarefas.fazer.push(tarefa);
   },
-  
+  addNotification(state, notification){
+    state.notifications.push(notification);
+  },
   removeTarefa(state, id) {
     state.tarefas.fazer = state.tarefas.fazer.filter(
       (tarefa) => tarefa.id !== id

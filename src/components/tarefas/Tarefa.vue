@@ -17,7 +17,7 @@
         color="orange lighten-2"
         text
       >
-        Descrição
+        Detalhes
       </v-btn>
 
       <v-spacer></v-spacer>
