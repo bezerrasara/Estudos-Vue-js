@@ -1,7 +1,5 @@
 <template>
   <div>
-    
-    
  {{this.$store.state.notifications[0].text}}
   </div>
 </template>

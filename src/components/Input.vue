@@ -8,11 +8,12 @@
         <v-btn 
           fab 
           color="primary"
+          small
           dark
           v-bind="attrs"
           v-on="on"
         >
-          <v-icon dark large>mdi-plus</v-icon>
+          <v-icon dark >mdi-plus</v-icon>
         </v-btn>
       </template>
     

@@ -6,33 +6,27 @@ export default {
     //     state.tarefas.fazer = tarefasDB
 
     // })
-    
+
     if (state.tarefas.fazer.length != 0) {
       localStorage.getItem(state.tarefas.fazer);
-    } 
-    else if (state.tarefas.fazendo.length != 0) {
+    } else if (state.tarefas.fazendo.length != 0) {
       localStorage.getItem(state.tarefas.fazendo);
-    }
-    else {
+    } else {
       localStorage.getItem(state.tarefas.feito);
     }
   },
-  buscaNotification(state){
-    localStorage.getItem(state.notifications);
 
-  },
   adicionaTarefa(state, tarefa) {
     // db.collection('tarefas').add(tarefa)
     state.tarefas.fazer.push(tarefa);
   },
-  addNotification(state, notification){
-    state.notifications.push(notification);
-  },
+
   removeTarefa(state, id) {
     state.tarefas.fazer = state.tarefas.fazer.filter(
       (tarefa) => tarefa.id !== id
     );
   },
+
   removeTarefaFazendo(state, id) {
     state.tarefas.fazendo = state.tarefas.fazendo.filter(
       (tarefa) => tarefa.id !== id
@@ -44,16 +38,18 @@ export default {
     );
   },
   editaTarefa(state, novaTarefa) {
-    var item = state.tarefas.fazer.find(tarefa=> tarefa.id==novaTarefa.id)
-    item.titulo = novaTarefa.titulo
+    var item = state.tarefas.fazer.find((tarefa) => tarefa.id == novaTarefa.id);
+    item.titulo = novaTarefa.titulo;
   },
   editaTarefaFazendo(state, novaTarefa) {
-    var item = state.tarefas.fazendo.find(tarefa=> tarefa.id==novaTarefa.id)
-    item.titulo = novaTarefa.titulo
+    var item = state.tarefas.fazendo.find(
+      (tarefa) => tarefa.id == novaTarefa.id
+    );
+    item.titulo = novaTarefa.titulo;
   },
   editaTarefaFeito(state, novaTarefa) {
-    var item = state.tarefas.feito.find(tarefa=> tarefa.id==novaTarefa.id)
-    item.titulo = novaTarefa.titulo
+    var item = state.tarefas.feito.find((tarefa) => tarefa.id == novaTarefa.id);
+    item.titulo = novaTarefa.titulo;
   },
 
   login(state, usuario) {
@@ -65,17 +61,17 @@ export default {
     state.conectado = false;
   },
 
-  async uploadImage(state, e){
+  async uploadImage(state, e) {
     const image = e.target.files[0];
-     const reader = new FileReader();
-     await  reader.readAsDataURL(image);
-        reader.onload =  e =>{
-          //  this.previewImage = 
-           state.imagem = e.target.result;
-           console.log(state.imagem);
-       };
-   },
-   buscaImagem(state){
+    const reader = new FileReader();
+    await reader.readAsDataURL(image);
+    reader.onload = (e) => {
+      //  this.previewImage =
+      state.imagem = e.target.result;
+      //  console.log(state.imagem);
+    };
+  },
+  buscaImagem(state) {
     localStorage.getItem(state.imagem);
-   }
+  },
 };

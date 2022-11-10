@@ -106,7 +106,9 @@
             <div class="text-center mt-4">+ Add another card</div>
           </v-card>
         </v-col>
-      </v-row></v-container>
+      </v-row>
+    </v-container>
+    
     </div>
 
 <div v-else>
@@ -114,19 +116,23 @@
     @click="fazerLogin">
     Fazer login
   </v-btn>
+  
+  
   </div>
 </template>
 
 <script>
 import draggable from "vuedraggable";
+import Input from "./Input.vue";
 import Tarefa from "./tarefas/Tarefa.vue";
 
 export default {
   props: ['tarefa'],
   components: {
     draggable,
-    Tarefa
-  },
+    Tarefa,
+    Input
+},
   data() {
     return {
 
