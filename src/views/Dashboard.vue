@@ -123,8 +123,6 @@ export default {
       { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/Dashboard' },
 
     ],
-
-
     selected: null,
     component: "",
 
@@ -148,8 +146,6 @@ export default {
 
     logout() {
       this.$store.commit('logout')
-      // this.$router.replace({name:'Login'})
-
     },
     fazerLogin() {
       this.$router.replace({ name: 'Login' })

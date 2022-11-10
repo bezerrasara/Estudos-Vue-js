@@ -5,7 +5,6 @@
         persistent
         max-width="290"
       >
-       
         <v-card>
           <v-card-title class="text-h5">
             Excluir
@@ -45,7 +44,6 @@
       data () {
         return {
           dialog: true,
-      
         }
       },
       
@@ -61,10 +59,7 @@
             this.$store.commit('removeTarefaFeito', this.tarefa.id);
           }
           this.$emit('fechaModal');
-          
         }
-
-        
       }
     }
   </script>
