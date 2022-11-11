@@ -21,14 +21,33 @@
             <draggable class="draggable-list" 
             :list="$store.state.tarefas.fazer" 
             group="my-group">
+            <!-- <div v-if="expirando!=false">
+                <v-alert 
+                v-model="alert"
+                dismissible
+                  type="warning"
+                >
+                  {{$store.state.notification}}
+                </v-alert>
+                <div class="text-center">
+                  <v-btn
+                    v-if="!alert"
+                   color="orange" 
+                   small
+                    dark
+                    @click="alert = true"
+                  >
+                     <v-icon>mdi-alert</v-icon>
+                  </v-btn></div>
+                </div> -->
                 <v-card v-for="element in $store.state.tarefas.fazer" 
               :key="element.id"
                 class="mx-auto mt-2" 
                  elevation="5"
                 color="red " 
                 dark>
-                
-                  <Tarefa 
+               
+             <Tarefa 
                   :tarefa="element" 
                   />
                 </v-card>
@@ -112,11 +131,13 @@
     </div>
 
 <div v-else>
-    <v-btn 
-    @click="fazerLogin">
-    Fazer login
-  </v-btn>
-  
+  <v-container >
+  <h3 class="text-center mt-4 white" >
+    Você está desconectado, faça 
+    <a @click="fazerLogin">Login</a> 
+    para gerenciar suas tarefas</h3>
+    
+  </v-container>
   
   </div>
 </template>
@@ -135,7 +156,9 @@ export default {
 },
   data() {
     return {
-
+      expirando: false,
+      alert: false,
+      notification: ""
     };
   },
   methods: {
@@ -143,8 +166,29 @@ export default {
       const user = this.$store.state.usuario
       this.$router.replace({ name: 'Login' })
       console.log(this.element)
-    },
+    },prazoNote(){
+  const dateAtual= (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
+  const dif = new Date(this.$store.state.prazo).getTime()- new Date(dateAtual).getTime()
+  var diffSegundos = dif / 1000;
+  var diffMinutos = diffSegundos / 60;
+  var diffHoras = diffMinutos / 60;
+  var diffDias = diffHoras / 24;
 
+  // var diffMeses = diffDias / 30;
+  if(diffDias<=5) {
+    this.notification = "Sua tarefa expira em " + diffDias + " dias"
+    const note = {
+      id: new Date().getTime(),
+      text: this.notification
+    }
+  this.expirando=true;
+  this.$store.state.notification = this.notification
+  this.$store.commit('addNotification', note)
+  this.$store.commit('buscaNotification')
+  // this.$store.state.notifications.push(this.notification)
+}
+
+  }, 
   },
   computed: {
     isLoggedIn: function () {
@@ -155,14 +199,15 @@ export default {
     },
     feito() {
       return this.$store.state.tarefas.feito
-    }
+    },
+   
   },
   created(){
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
     const data = today.toDateString(); // "Sun Jan 30 2022"
     console.log(data);
-   
+   this.prazoNote()
     
   }
  
@@ -189,4 +234,6 @@ export default {
   background: green;
   display: inline-block;
 }
+
+
 </style>

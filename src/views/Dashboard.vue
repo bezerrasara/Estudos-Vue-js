@@ -33,9 +33,9 @@
                 <v-icon>mdi-circle-medium</v-icon>
 
               </v-btn>
-              <v-btn @click="fazerLogin">Fazer login</v-btn>
-            </v-list-item-subtitle>
-          </v-list-item>
+              
+           </v-list-item-subtitle>
+          </v-list-item> <a class="white" @click="fazerLogin">Fazer login</a>
         </div>
       </v-img>
 
@@ -74,6 +74,10 @@
           <v-tab href="#Tarefas">
             <v-icon> mdi-clipboard-check-multiple</v-icon>
           </v-tab>
+          <v-divider
+      class="mx-4"
+      vertical
+    ></v-divider>
           <v-tab href="#notifications">
 
             <v-icon>
@@ -81,6 +85,11 @@
             </v-icon>
             
           </v-tab>
+
+          <v-divider
+      class="mx-4"
+      vertical
+    ></v-divider>
           <v-tab href="#chat">
             <v-icon>mdi-message-text</v-icon>
           </v-tab>
@@ -98,7 +107,6 @@
 
 <script>
 import Input from '../components/Input.vue';
-import Fazendo from '../components/Fazendo.vue'
 import Tarefas from '../components/Tarefas.vue'
 import uploadImage from '../components/uploadImage.vue';
 import notifications from '../components/notifications.vue';
@@ -109,7 +117,6 @@ export default {
   components: {
     Input,
     uploadImage,
-    Fazendo,
     Tarefas,
     notifications,
     chat
@@ -146,6 +153,7 @@ export default {
 
     logout() {
       this.$store.commit('logout')
+      this.$router.replace({name: 'Home'})
     },
     fazerLogin() {
       this.$router.replace({ name: 'Login' })
@@ -168,9 +176,7 @@ export default {
       }
     },
     mounted() {
-
       this.$store.commit('buscaImagem')
-
     }
 
   }

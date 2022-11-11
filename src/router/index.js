@@ -8,6 +8,12 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'Home',
+    component: () => import( '../views/home.vue'),
+    meta: { guest: true },
+  },
+  {
+    path: '/Login',
     name: 'Login',
     component: () => import( '../views/Login.vue'),
     meta: { guest: true },
@@ -18,19 +24,7 @@ const routes = [
     
     component: () => import( '../components/uploadImage.vue')
   },
-  {
-    path: '/notifications',
-    name: 'notifications',
-    
-    component: () => import( '../components/notifications.vue')
-  },
-
-  {
-    path: '/Fazendo',
-    name: 'Fazendo',
-    
-    component: () => import( '../components/Fazendo.vue')
-  },
+  
   {
     path: '/Tarefas',
     name: 'Tarefas',
@@ -51,7 +45,6 @@ const routes = [
     component: () => import( '../views/Dashboard.vue'),
     meta: { requiresAuth: true },
   },
-  
 ]
 
 const router = new VueRouter({
