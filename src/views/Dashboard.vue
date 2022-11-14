@@ -17,11 +17,6 @@
                   {{ $store.state.usuario }}
                 </v-badge>
               </v-list-item-title>
-
-              <v-list-item-subtitle v-on:click="logout">
-                log out
-              </v-list-item-subtitle>
-
             </v-list-item-content>
           </v-list-item>
         </div>
@@ -69,22 +64,23 @@
               <v-list-item-title>Quadro 2</v-list-item-title>
             </v-list-item>
         </v-list-group>
-     
           </v-list>
+          <template v-slot:append>
+        <div class="pa-4 " >
+          <v-btn block color="blue"  @click="logout">
+            Sair
+          </v-btn>
+        </div>
+      </template>
 
     </v-navigation-drawer>
-
-    <v-app-bar app prominent height="185" color="#fcb69f" dark src="../assets/bg.jpg">
+    <v-app-bar app prominent height="180" color="#fcb69f" dark src="../assets/bg.jpg">
       <template v-slot:img="{ props }">
         <v-img v-bind="props" gradient="to top right, rgba(19,84,122,.5), rgba(28,108,199,.8)"></v-img>
       </template>
 
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-app-bar-title class="mt-16">
-
-       
-
-      </v-app-bar-title>
+     
       <v-spacer></v-spacer>
       <h4 class="mt-16"> {{ Data }}</h4>
       <template v-slot:extension>
@@ -118,9 +114,7 @@
       </template>
     </v-app-bar>
     <v-main>
-
       <component v-bind:is="component" />
-
     </v-main>
   </div>
 </template>
@@ -130,7 +124,7 @@ import Input from '../components/Input.vue';
 import Tarefas from '../components/Tarefas.vue'
 import uploadImage from '../components/uploadImage.vue';
 import notifications from '../components/notifications.vue';
-import chat from '../views/chat.vue';
+
 
 export default {
 
@@ -139,7 +133,7 @@ export default {
     uploadImage,
     Tarefas,
     notifications,
-    chat
+    
   },
 
   data: () => ({
@@ -187,10 +181,10 @@ export default {
       if (this.selected === "notifications") {
         this.component = null;
       }
-      else if (this.selected == "chat") {
-        this.component = chat;
+      // else if (this.selected == "chat") {
+      //   this.component = chat;
 
-      }
+      // }
       else {
         this.component = Tarefas;
       }

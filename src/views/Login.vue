@@ -3,9 +3,9 @@
       <v-main>
          <v-container fluid fill-height>
             <v-layout align-center justify-center>
-               <v-flex xs12 sm8 md3>
+               <v-flex xs16 sm8 md3>
                   <v-card class="elevation-12 ">
-                     <v-toolbar dark color="primary">
+                     <v-toolbar dark color="purple">
                         <v-toolbar-title>{{ isRegister ? stateObj.register.name : stateObj.login.name }} form
                         </v-toolbar-title>
                      </v-toolbar>
@@ -21,13 +21,13 @@
                               label="Confirm Password" type="password" placeholder="confirm password" required>
                            </v-text-field>
                            <div class="red--text"> {{ errorMessage }}</div>
-                           <v-btn type="submit" class="mt-4" color="primary" value="log in">{{ isRegister ?
+                           <v-btn type="submit" class="mt-4" color="purple" value="log in">{{ isRegister ?
                                  stateObj.register.name : stateObj.login.name
                            }}</v-btn>
-
-                           <div class="grey--text mt-4" v-on:click="isRegister = !isRegister;">
+                           <div>
+                           <a class="grey--text mt-4" @click="isRegister = !isRegister;">
                               {{ toggleMessage }}
-                           </div>
+                           </a></div>
                         </form>
                      </v-card-text>
                   </v-card>

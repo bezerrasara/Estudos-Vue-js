@@ -37,12 +37,7 @@ const routes = [
     
     component: () => import( '../components/Tarefas.vue')
   },
-  {
-    path: '/chat',
-    name: 'chat',
-    
-    component: () => import( '../views/chat.vue')
-  },
+ 
   
   {
     path: '/Dashboard',

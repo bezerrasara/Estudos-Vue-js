@@ -36,7 +36,7 @@
               <v-spacer></v-spacer>
             </draggable>
             <v-divider></v-divider>
-            <div class="text-center mt-4 "> 
+            <div class="text-center mt-2 pa-2"> 
               <Input />
             </div>
           </v-card>
@@ -74,7 +74,7 @@
                 </v-card>
             </draggable>
             <v-divider></v-divider>
-            <div class="text-center mt-4">Soltar card aqui</div>
+            <div class="text-center mt-2 pa-2">Soltar card aqui</div>
 
           </v-card>
         </v-col>
@@ -106,14 +106,12 @@
                 </v-card>
             </draggable>
             <v-divider></v-divider>
-            <div class="text-center mt-4">Soltar card aqui</div>
+            <div class="text-center mt-2 pa-2">Soltar card aqui</div>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-    
     </div>
-
 <div v-else>
   <v-container >
   <h3 class="text-center mt-4 white" >
@@ -140,17 +138,17 @@ export default {
 },
   data() {
     return {
-      expirando: false,
+      
       alert: false,
-      notification: ""
     };
   },
   methods: {
     fazerLogin() {
-      const user = this.$store.state.usuario
+      // const user = this.$store.state.usuario
       this.$router.replace({ name: 'Login' })
       console.log(this.element)
-    },prazoNote(){
+    },
+    prazoNote(){
   const dateAtual= (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
   const dif = new Date(this.$store.state.prazo).getTime()- new Date(dateAtual).getTime()
   var diffSegundos = dif / 1000;
@@ -159,18 +157,14 @@ export default {
   var diffDias = diffHoras / 24;
 
   // var diffMeses = diffDias / 30;
-  if(diffDias<=5) {
-    this.notification = "Sua tarefa expira em " + diffDias + " dias"
-    const note = {
-      id: new Date().getTime(),
-      text: this.notification
-    }
-  this.expirando=true;
-  this.$store.state.notification = this.notification
-  this.$store.commit('addNotification', note)
-  this.$store.commit('buscaNotification')
-  // this.$store.state.notifications.push(this.notification)
-}
+  // if(diffDias<=5) {
+  //   this.notification = "Sua tarefa expira em " + diffDias + " dias"
+  //   const note = {
+  //     id: new Date().getTime(),
+  //     text: this.notification
+  //   }
+
+// }
 
   }, 
   },
