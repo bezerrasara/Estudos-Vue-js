@@ -13,13 +13,13 @@
           </v-list-item-action>
           </v-list-item>
           <div>
-              <v-chip
+              <v-chip 
                 small
-                class="ma-2"
-                color="primary"
+                class="mx-2 "
+                color="blue darken-4"
                 text-color="white"
-              ><v-icon small>mdi-clock</v-icon> 
-               <h5>{{tarefa.prazo}}</h5>
+              ><v-icon class="ma-2" small>mdi-clock</v-icon> 
+               <h5 >{{tarefa.prazo}}</h5>
               </v-chip>
                  </div>
           <v-card-actions>

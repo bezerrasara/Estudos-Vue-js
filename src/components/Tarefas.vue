@@ -25,7 +25,7 @@
               :key="element.id"
                 class="mx-auto mt-2" 
                  elevation="5"
-                color="red " 
+                color="red darken-2" 
                 dark>
                
              <Tarefa 
