@@ -56,15 +56,39 @@ export default {
   editaTarefa(state, novaTarefa) {
     var item = state.tarefas.fazer.find(tarefa=> tarefa.id==novaTarefa.id)
     item.titulo = novaTarefa.titulo
+    item.descricao = novaTarefa.descricao
+    item.prazo = novaTarefa.prazo
   },
   editaTarefaFazendo(state, novaTarefa) {
     var item = state.tarefas.fazendo.find(tarefa=> tarefa.id==novaTarefa.id)
     item.titulo = novaTarefa.titulo
+    item.descricao = novaTarefa.descricao
+    item.prazo = novaTarefa.prazo
   },
   editaTarefaFeito(state, novaTarefa) {
     var item = state.tarefas.feito.find(tarefa=> tarefa.id==novaTarefa.id)
     item.titulo = novaTarefa.titulo
+    item.descricao = novaTarefa.descricao
+    item.prazo = novaTarefa.prazo
   },
+
+  alterarNome(state, nome){
+    if (nome==null){
+      state.usuario=state.usuario
+  }
+  else{
+    state.usuario = nome
+  }
+
+  },
+  alterarSenha(state, senha){
+    if (senha==null){
+      state.password=state.password
+  }
+    else{
+      state.password = senha
+  }
+},
 
   login(state, usuario) {
     state.conectado = true;

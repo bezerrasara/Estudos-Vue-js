@@ -22,6 +22,56 @@
               v-model="titulo"
             >
             </v-text-field>
+            <v-text-field
+           class="px-3"
+              label="Descrição"
+              outlined
+              v-model="descricao"
+            >
+            </v-text-field>
+
+            <v-menu
+        ref="menu"
+        v-model="menu"
+        :close-on-content-click="false"
+        
+        transition="scale-transition"
+        offset-y
+        min-width="auto"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="date"
+            label="Prazo"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="date"
+          no-title
+          scrollable
+        >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            color="primary"
+            @click="menu = false"
+          >
+            Cancel
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.menu.save(date)"
+          >
+            OK
+          </v-btn>
+        </v-date-picker>
+      </v-menu>
+
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
@@ -42,6 +92,9 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
+
+      <!-- prazo -->
+     
     </div>
   </template>
   
@@ -51,8 +104,12 @@
       props: ['tarefa'],
       data () {
         return {
+          date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      menu: false,
           dialog: true,
           titulo: null,
+          prazo: null,
+          descricao: null,
           
         }
       },
@@ -65,6 +122,8 @@
           let novaTarefa = {
             titulo: this.titulo,
             id: this.tarefa.id,
+            prazo: this.date,
+            descricao: this.descricao
           }
          
           if (this.$store.state.tarefas.fazer.includes(this.tarefa)){
