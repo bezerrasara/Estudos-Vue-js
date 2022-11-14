@@ -10,7 +10,6 @@
                         </v-toolbar-title>
                      </v-toolbar>
                      <v-card-text>
-                        <!-- {{ $store.state.user }} -->
                         <form ref="form" @submit.prevent="isRegister ? register() : login()">
                            <v-text-field v-model="username" name="username" label="Username" type="text"
                               placeholder="username" required></v-text-field>

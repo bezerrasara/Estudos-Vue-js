@@ -85,6 +85,16 @@ export default {
           //  console.log(state.imagem);
        };
    },
+   async uploadImageCard(state, e){
+    const image = e.target.files[0];
+     const reader = new FileReader();
+     await  reader.readAsDataURL(image);
+        reader.onload =  e =>{
+          //  this.previewImage = 
+           state.imagemCard = e.target.result;
+          //  console.log(state.imagem);
+       };
+   },
    buscaImagem(state){
     localStorage.getItem(state.imagem);
    }

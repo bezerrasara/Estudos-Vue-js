@@ -9,5 +9,6 @@ export default {
   password: null,
   conectado: null,
   prazo: null,
-  notifications: []
+  notifications: [],
+  imagemCard: []
 };

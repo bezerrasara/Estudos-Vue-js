@@ -5,7 +5,7 @@
       <v-row 
       justify="center"
       >
-        <v-col lg="2"
+        <v-col lg="3"
         cols="12" 
         sm="3"
         
@@ -14,32 +14,13 @@
         <v-card 
           rounded="lg" 
           color="grey lighten-3"
-  
+          
           min-height="auto"
           >
             <h3 class="text-center grey">Fazer ✍</h3>
             <draggable class="draggable-list" 
             :list="$store.state.tarefas.fazer" 
             group="my-group">
-            <!-- <div v-if="expirando!=false">
-                <v-alert 
-                v-model="alert"
-                dismissible
-                  type="warning"
-                >
-                  {{$store.state.notification}}
-                </v-alert>
-                <div class="text-center">
-                  <v-btn
-                    v-if="!alert"
-                   color="orange" 
-                   small
-                    dark
-                    @click="alert = true"
-                  >
-                     <v-icon>mdi-alert</v-icon>
-                  </v-btn></div>
-                </div> -->
                 <v-card v-for="element in $store.state.tarefas.fazer" 
               :key="element.id"
                 class="mx-auto mt-2" 
@@ -50,16 +31,19 @@
              <Tarefa 
                   :tarefa="element" 
                   />
+                   
                 </v-card>
               <v-spacer></v-spacer>
             </draggable>
             <v-divider></v-divider>
-            <div class="text-center mt-4 "> + Add another card</div>
+            <div class="text-center mt-4 "> 
+              <Input />
+            </div>
           </v-card>
         </v-col>
 
         <v-col 
-        lg="2"
+        lg="3"
         cols="12" 
         sm="3"
         class="mx-1"
@@ -90,7 +74,7 @@
                 </v-card>
             </draggable>
             <v-divider></v-divider>
-            <div class="text-center mt-4">+ Add another card</div>
+            <div class="text-center mt-4">Soltar card aqui</div>
 
           </v-card>
         </v-col>
@@ -98,7 +82,7 @@
         <v-col 
         cols="12" 
         sm="3"
-        lg="2"
+        lg="3"
         >
           <v-card 
           color="grey lighten-3"
@@ -122,7 +106,7 @@
                 </v-card>
             </draggable>
             <v-divider></v-divider>
-            <div class="text-center mt-4">+ Add another card</div>
+            <div class="text-center mt-4">Soltar card aqui</div>
           </v-card>
         </v-col>
       </v-row>

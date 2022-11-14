@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <v-navigation-drawer v-model="drawer" app dark src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg">
       <v-img src="../assets/bg.jpg" gradient="to top right, rgba(19,84,122,.5), rgba(28,108,199,.8)" dark
         class="pt-5 text-center">
@@ -25,7 +25,7 @@
             </v-list-item-content>
           </v-list-item>
         </div>
-        <div v-else>
+        <!-- <div v-else>
           <v-list-item link color="pink">
             <v-list-item-subtitle>
               Offline
@@ -36,7 +36,7 @@
               
            </v-list-item-subtitle>
           </v-list-item> <a class="white" @click="fazerLogin">Fazer login</a>
-        </div>
+        </div> -->
       </v-img>
 
       <v-divider></v-divider>
@@ -51,7 +51,27 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
+        <v-list-group
+        :value="false"
+        prepend-icon="mdi-card-multiple"
+      >
+        <template v-slot:activator>
+
+          <v-list-item-content>
+            <v-list-item-title>Quadros</v-list-item-title>
+          </v-list-item-content>
+        </template>
+
+        <v-list-item link>
+              <v-list-item-title>Quadro 1</v-list-item-title>
+            </v-list-item>
+            <v-list-item link>
+              <v-list-item-title>Quadro 2</v-list-item-title>
+            </v-list-item>
+        </v-list-group>
+     
+          </v-list>
+
     </v-navigation-drawer>
 
     <v-app-bar app prominent height="185" color="#fcb69f" dark src="../assets/bg.jpg">
@@ -62,7 +82,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title class="mt-16">
 
-        <Input />
+       
 
       </v-app-bar-title>
       <v-spacer></v-spacer>
@@ -126,9 +146,9 @@ export default {
     drawer: null,
     alert: true,
     items: [
-      { title: 'Perfil', icon: 'mdi-account' },
+      
       { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/Dashboard' },
-
+      { title: 'Definições', icon: 'mdi-wrench', to: '/configs' },
     ],
     selected: null,
     component: "",

@@ -13,6 +13,12 @@ const routes = [
     meta: { guest: true },
   },
   {
+    path: '/configs',
+    name: 'Definições',
+    component: () => import( '../views/configs.vue'),
+    meta: { guest: true },
+  },
+  {
     path: '/Login',
     name: 'Login',
     component: () => import( '../views/Login.vue'),

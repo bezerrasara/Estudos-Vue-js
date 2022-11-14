@@ -2,25 +2,16 @@
     <v-dialog
       v-model="dialog"
       persistent
-      max-width="600px"
+      max-width="400px" 
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn 
-          fab 
-          color="primary"
-          small
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          <v-icon dark >mdi-plus</v-icon>
-        </v-btn>
+          <v-icon v-bind="attrs"
+          v-on="on" >mdi-plus 
+        </v-icon>
+       Add card
       </template>
-    
-
       <v-card 
       class="mx-auto"
-      
      >
      <v-card-title>Nova tarefa</v-card-title>
         <!-- titulo -->
@@ -95,6 +86,8 @@
             placeholder="Select..."
             required
           ></v-select>
+
+          <input type="file" accept="image/*" @change=uploadImage>
         </v-card-text>
         <v-divider class="mt-12"></v-divider>
         <v-card-actions>
@@ -143,6 +136,7 @@ export default {
   
   
 data: () => ({
+  imagem: '',
   date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       menu: false,
       modal: false,
@@ -158,7 +152,7 @@ data: () => ({
 computed: {
       form () {
         return {
-        
+          // imagem: "",
           title: this.title,
           descricao: this.descricao,
           prazo: this.date,
@@ -181,7 +175,10 @@ computed: {
 
         return true
       },
-      
+      uploadImage(e) {
+      this.$store.commit('uploadImageCard', e)
+      this.imagem = this.$store.state.tarefas.fazer.imagem
+    },
       resetForm () {
         this.errorMessages = []
         this.formHasErrors = false
@@ -197,11 +194,12 @@ computed: {
           descricao: this.descricao,
           prazo: this.date,
           prioridade: this.prioridade,
+          imagem: this.imagem
         }
 
         this.$store.dispatch('adicionaTarefa', tarefa)
         this.$store.state.prazo = this.date
-        
+        // this.$store.state.imagemCard = this.imagem
         this.dialog=false
         this.title = ""
         this.descricao = ""

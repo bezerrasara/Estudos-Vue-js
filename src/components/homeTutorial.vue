@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <v-card
+    <div >
+    <v-card
     elevation="24"
     max-width="444"
-    class="mx-auto mt-16"
+    class="mx-auto mt-4"
   >
     <v-carousel
       cycle
@@ -29,11 +29,8 @@
             <v-list-item-title>
               <h3>{{ slide }} </h3>
               <img :src= "item[i]">
-           
-             
             </v-list-item-title>
            </v-list-item>
-           
           </v-row>
         </v-sheet>
       </v-carousel-item>
@@ -75,12 +72,7 @@
               <v-list-item-content class="text-center">
                 {{text}}
               </v-list-item-content>
-              
                </v-list-item>
-            <!-- <h4>
-              {{ text }} 
-           </h4> -->
-           
           </v-row>
         </v-sheet>
       </v-carousel-item>

@@ -4,7 +4,7 @@
               <v-list-item-content>
                 {{tarefa.titulo}}
               </v-list-item-content>
-              
+             
                <v-list-item-action>
          
             <Tarefamenu 
@@ -12,6 +12,16 @@
             />
           </v-list-item-action>
           </v-list-item>
+          <div>
+              <v-chip
+                small
+                class="ma-2"
+                color="primary"
+                text-color="white"
+              ><v-icon small>mdi-clock</v-icon> 
+               <h5>{{tarefa.prazo}}</h5>
+              </v-chip>
+                 </div>
           <v-card-actions>
       <v-btn
         color="orange lighten-2"
@@ -45,10 +55,11 @@
   </template>
   
   <script>
+import AdicionaImagem from '../adicionaImagem.vue';
   import Tarefamenu from './Tarefamenu.vue'; 
   
   export default {
-    components: {Tarefamenu}, 
+    components: {Tarefamenu, AdicionaImagem}, 
       props:['tarefa'],
       data() {
         return{
@@ -64,7 +75,6 @@
 
         mounted() {
           return this.$store.commit('buscaTarefas')
-
   },
       }
      
