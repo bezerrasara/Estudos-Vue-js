@@ -55,11 +55,11 @@
   </template>
   
   <script>
-import AdicionaImagem from '../adicionaImagem.vue';
+
   import Tarefamenu from './Tarefamenu.vue'; 
   
   export default {
-    components: {Tarefamenu, AdicionaImagem}, 
+    components: {Tarefamenu}, 
       props:['tarefa'],
       data() {
         return{

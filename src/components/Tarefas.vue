@@ -50,7 +50,6 @@
         >
           <v-card 
           color="grey lighten-3"
-          
           min-height="auto" 
           rounded="lg">
 
@@ -59,23 +58,18 @@
             class="draggable-list" 
             :list="fazendo" 
             group="my-group">
-
-              
-             
                 <v-card  v-for="element in fazendo" 
               :key="element.id"
                 class="mx-auto mt-2" 
                 elevation="5"
                 color="green" 
                 dark>
-
                   <Tarefa 
                   :tarefa="element" />
                 </v-card>
             </draggable>
             <v-divider></v-divider>
             <div class="text-center mt-2 pa-2">Soltar card aqui</div>
-
           </v-card>
         </v-col>
 
@@ -112,16 +106,6 @@
       </v-row>
     </v-container>
     </div>
-<div v-else>
-  <v-container >
-  <h3 class="text-center mt-4 white" >
-    Você está desconectado, faça 
-    <a @click="fazerLogin">Login</a> 
-    para gerenciar suas tarefas</h3>
-    
-  </v-container>
-  
-  </div>
 </template>
 
 <script>
@@ -138,35 +122,23 @@ export default {
 },
   data() {
     return {
-      
       alert: false,
     };
   },
   methods: {
     fazerLogin() {
-      // const user = this.$store.state.usuario
       this.$router.replace({ name: 'Login' })
-      console.log(this.element)
+      
     },
-    prazoNote(){
-  const dateAtual= (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
-  const dif = new Date(this.$store.state.prazo).getTime()- new Date(dateAtual).getTime()
-  var diffSegundos = dif / 1000;
-  var diffMinutos = diffSegundos / 60;
-  var diffHoras = diffMinutos / 60;
-  var diffDias = diffHoras / 24;
+  //   prazoNote(){
+  // const dateAtual= (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
+  // const dif = new Date(this.$store.state.prazo).getTime()- new Date(dateAtual).getTime()
+  // var diffSegundos = dif / 1000;
+  // var diffMinutos = diffSegundos / 60;
+  // var diffHoras = diffMinutos / 60;
+  // var diffDias = diffHoras / 24;
+  // }, 
 
-  // var diffMeses = diffDias / 30;
-  // if(diffDias<=5) {
-  //   this.notification = "Sua tarefa expira em " + diffDias + " dias"
-  //   const note = {
-  //     id: new Date().getTime(),
-  //     text: this.notification
-  //   }
-
-// }
-
-  }, 
   },
   computed: {
     isLoggedIn: function () {
@@ -185,8 +157,7 @@ export default {
     const today = new Date(timeElapsed);
     const data = today.toDateString(); // "Sun Jan 30 2022"
     console.log(data);
-   this.prazoNote()
-    
+   
   }
  
 };

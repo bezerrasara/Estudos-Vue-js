@@ -87,7 +87,6 @@
             required
           ></v-select>
 
-          <input type="file" accept="image/*" @change=uploadImage>
         </v-card-text>
         <v-divider class="mt-12"></v-divider>
         <v-card-actions>
@@ -126,8 +125,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  
-
 </template>
 
 <script>
@@ -136,7 +133,7 @@ export default {
   
   
 data: () => ({
-  imagem: '',
+  
   date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       menu: false,
       modal: false,
@@ -152,7 +149,6 @@ data: () => ({
 computed: {
       form () {
         return {
-          // imagem: "",
           title: this.title,
           descricao: this.descricao,
           prazo: this.date,
@@ -172,13 +168,9 @@ computed: {
         this.errorMessages = this.address && !this.title
           ? `Hey! I'm required`
           : ''
-
         return true
       },
-      uploadImage(e) {
-      this.$store.commit('uploadImageCard', e)
-      this.imagem = this.$store.state.tarefas.fazer.imagem
-    },
+     
       resetForm () {
         this.errorMessages = []
         this.formHasErrors = false
@@ -194,12 +186,11 @@ computed: {
           descricao: this.descricao,
           prazo: this.date,
           prioridade: this.prioridade,
-          imagem: this.imagem
+          
         }
 
         this.$store.dispatch('adicionaTarefa', tarefa)
         this.$store.state.prazo = this.date
-        // this.$store.state.imagemCard = this.imagem
         this.dialog=false
         this.title = ""
         this.descricao = ""

@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from "../store";
-
 
 Vue.use(VueRouter)
 
@@ -38,7 +36,6 @@ const routes = [
     component: () => import( '../components/Tarefas.vue')
   },
  
-  
   {
     path: '/Dashboard',
     name: 'Dashboard',

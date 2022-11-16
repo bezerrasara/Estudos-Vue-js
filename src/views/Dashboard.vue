@@ -45,26 +45,8 @@
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
-        <v-list-group
-        :value="false"
-        prepend-icon="mdi-card-multiple"
-      >
-        <template v-slot:activator>
-
-          <v-list-item-content>
-            <v-list-item-title>Quadros</v-list-item-title>
-          </v-list-item-content>
-        </template>
-
-        <v-list-item link>
-              <v-list-item-title>Quadro 1</v-list-item-title>
-            </v-list-item>
-            <v-list-item link>
-              <v-list-item-title>Quadro 2</v-list-item-title>
-            </v-list-item>
-        </v-list-group>
-          </v-list>
+        </v-list-item> 
+          </v-list> 
           <template v-slot:append>
         <div class="pa-4 " >
           <v-btn block color="blue"  @click="logout">
@@ -95,11 +77,9 @@
       vertical
     ></v-divider>
           <v-tab href="#notifications">
-
             <v-icon>
               mdi-bell
             </v-icon>
-            
           </v-tab>
 
           <v-divider
@@ -123,48 +103,38 @@
 import Input from '../components/Input.vue';
 import Tarefas from '../components/Tarefas.vue'
 import uploadImage from '../components/uploadImage.vue';
-import notifications from '../components/notifications.vue';
-
 
 export default {
-
   components: {
     Input,
     uploadImage,
     Tarefas,
-    notifications,
-    
   },
-
+  
   data: () => ({
     drawer: null,
     alert: true,
     items: [
-      
       { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/Dashboard' },
       { title: 'Definições', icon: 'mdi-wrench', to: '/configs' },
     ],
     selected: null,
     component: "",
-
   }),
 
   computed: {
     isLoggedIn: function () {
-
       return this.$store.getters.isLoggedIn;
-
     },
+
     Data: () => {
       const timeElapsed = Date.now();
       const today = new Date(timeElapsed);
-
       return today.toDateString(); // "Sun Jan 30 2022"
     },
-
   },
-  methods: {
 
+  methods: {
     logout() {
       this.$store.commit('logout')
       this.$router.replace({name: 'Home'})
@@ -176,15 +146,10 @@ export default {
       this.$router.replace({ name: 'UploadImage' })
       this.fotoAtual = this.$store.state.imagem
     },
-
     toggle() {
       if (this.selected === "notifications") {
         this.component = null;
       }
-      // else if (this.selected == "chat") {
-      //   this.component = chat;
-
-      // }
       else {
         this.component = Tarefas;
       }
@@ -192,7 +157,6 @@ export default {
     mounted() {
       this.$store.commit('buscaImagem')
     }
-
   }
 };
 </script>

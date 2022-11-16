@@ -4,6 +4,7 @@ export default {
     fazendo: [],
     feito: [],
   },
+ 
   imagem: null,
   usuario: null,
   password: null,
